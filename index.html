@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia & Authoring | Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Multimedia & Authoring</h1>
+            <p>Melvin Catuera | BSIT-NS-2A</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="rotoscope.html">Rotoscope</a></li>
+                <li><a href="solar-system.html">Solar System</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('assets/images/Multimedia-Production-Concept.png');">
+            <div class="hero-content">
+                <h2>Bringing Imagination to Life</h2>
+                <p>Explore our animation tools and 3D creations</p>
+                <div class="cta-buttons">
+                    <a href="rotoscope.html" class="btn">Rotoscope</a>
+                    <a href="solar-system.html" class="btn btn-secondary">Solar System Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card" onclick="location.href='rotoscope.html'">
+                    <img src="assets/images/thumbnails/1.png" alt="Rotoscope Animation">
+                    <h3>Rotoscope</h3>
+                    <p>Frame-by-frame animation for detailed motion and stylized effects.</p>
+                </div>
+                <div class="project-card" onclick="location.href='solar-system.html'">
+                    <img src="images/solar-thumbnail.jpg" alt="Solar System">
+                    <h3>Solar System in Blender</h3>
+                    <p>Realistic planetary motion and textures</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> melvin.catuera@tup.edu.ph</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Multimedia & Authoring. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
