@@ -42,14 +42,25 @@
                     </ul>
                 </div>
                 <div class="overview-image">
-                    <video autoplay loop muted playsinline>
-                        <source src="videos/solar-system-render.mp4" type="video/mp4">
+                    <video id="overview-video" autoplay loop muted playsinline onclick="openVideoModal(this)">
+                        <source src="assets/videos/solar-system.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <div class="image-caption">Full system view showing orbital paths</div>
+                    <div class="image-caption">Click video to enlarge | Full system view showing orbital paths</div>
                 </div>
             </div>
         </section>
+
+        <!-- Video Modal -->
+        <div id="videoModal" class="video-modal">
+            <div class="video-modal-content">
+                <span class="close-video" onclick="closeVideoModal()">&times;</span>
+                <video id="modalVideo" controls>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
 
         <section class="planet-showcase">
             <h2>Planet Highlights</h2>
@@ -219,7 +230,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p><i class="fas fa-envelope"></i>melvin.catuera@tup.edu.ph</p>
+                <p><i class="fas fa-envelope"></i> melvin.catuera@tup.edu.ph</p>
             </div>
             <div class="footer-section">
                 <h3>Follow</h3>
@@ -236,5 +247,82 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>// Add these functions to your existing script
+        function openVideoModal(videoElem) {
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            // Set the modal video source
+            modalVideo.src = videoElem.querySelector('source').src;
+            
+            // Show the modal
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Play the video
+            modalVideo.load();
+            modalVideo.play();
+        }
+        
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            // Hide the modal
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Pause the video
+            modalVideo.pause();
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeVideoModal();
+            }
+        }
+        
+        // Close with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+
+        // Your existing age calculator script remains the same
+        document.getElementById('calculate-age').addEventListener('click', function() {
+            const earthAge = parseFloat(document.getElementById('earth-age').value);
+            
+            // Orbital periods in Earth days
+            const planetaryYears = {
+                mercury: 88,
+                venus: 225,
+                earth: 365.25,
+                mars: 687,
+                jupiter: 4333,
+                saturn: 10759,
+                uranus: 30687,
+                neptune: 60190,
+                pluto: 90560
+            };
+            
+            // Calculate and display ages for each planet
+            document.querySelectorAll('.planet-card').forEach(card => {
+                const planetName = card.querySelector('h3').textContent.toLowerCase();
+                const earthDaysPerYear = planetaryYears[planetName];
+                
+                if (earthDaysPerYear) {
+                    const planetaryAge = (earthAge * 365.25 / earthDaysPerYear).toFixed(2);
+                    card.querySelector('.age-value').textContent = planetaryAge;
+                }
+            });
+        });
+        
+        // Calculate ages on page load with default value
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('calculate-age').click();
+        });</script>
 </body>
 </html>
